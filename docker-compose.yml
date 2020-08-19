@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+
+  server:
+    build: ./containers/nginx
+    container_name: server
+    volumes:
+      - ./containers/nginx/nginx.dev.conf:/etc/nginx/nginx.conf
+    networks:
+      - frontend
+    ports:
+      - 80:80
+
+  app:
+    build:
+      context: ./containers/app
+      dockerfile: Dockerfile.dev
+    container_name: app
+    environment:
+      NODE_ENV: 'development'
+      CHOKIDAR_USEPOLLING: 'true'
+    volumes:
+      - ./containers/app/src:/app/src
+      - ./containers/app/public:/app/public
+    networks:
+      - frontend
+    expose:
+      - 3000
+
+networks:
+  frontend:
+    driver: bridge
