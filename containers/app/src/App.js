@@ -4,14 +4,14 @@ import './App.css';
 function App() {
   const [data, setData] = useState("");
 
-  useEffect(() => {
-    fetch("/api/daisycabin").then(response =>
-      response.json().then(data => {
-        console.log(data);
-        setData(data.data);
-      })
-    );
-  }, []);
+  //useEffect(() => {
+    //fetch("/api/daisycabin").then(response =>
+      //response.json().then(data => {
+        //console.log(data);
+        //setData(data.data);
+      //})
+    //);
+  //}, []);
 
   return (
     <div className="App">
@@ -20,7 +20,7 @@ function App() {
           The Daisy Cabin
         </h1>
         <p>
-          {data}
+          colin@thedaisycabin.com
         </p>
       </header>
     </div>
