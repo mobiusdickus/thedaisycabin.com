@@ -2,9 +2,9 @@ version: '3'
 
 services:
 
-  server:
+  server-thedaisycabin:
     build: ./containers/nginx
-    container_name: server
+    container_name: server-thedaisycabon
     volumes:
       - ./containers/nginx/nginx.dev.conf:/etc/nginx/nginx.conf
     networks:
@@ -12,11 +12,11 @@ services:
     ports:
       - 80:80
 
-  app:
+  app-thedaisycabin:
     build:
       context: ./containers/app
       dockerfile: Dockerfile.dev
-    container_name: app
+    container_name: app-thedaisycabin
     environment:
       NODE_ENV: 'development'
       CHOKIDAR_USEPOLLING: 'true'
